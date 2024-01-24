@@ -1,9 +1,6 @@
-FROM ubuntu:20.04
+FROM alpine:3.19.0 
 
 WORKDIR /data
 VOLUME /data
 
-RUN apt-get update -q && \
-    DEBIAN_FRONTEND=nointeractive apt-get install -qy texlive-full pandoc && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add pandoc && apk add texlive-full
